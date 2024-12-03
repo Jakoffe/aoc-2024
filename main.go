@@ -1,10 +1,9 @@
 package main
 
-//go:generate go run ./gen
-
 import (
 	"aoc/src/solutions/day01"
 	"aoc/src/solutions/day02"
+	"aoc/src/solutions/day03"
 	"fmt"
 	"time"
 
@@ -54,6 +53,12 @@ func runAocPart(day int, part int) aocResult {
 			res, err = day02.SolveProblem1()
 		} else if part == 2 {
 			res, err = day02.SolveProblem2()
+		}
+	case 3:
+		if part == 1 {
+			res, err = day03.SolveProblem1()
+		} else if part == 2 {
+			res, err = day03.SolveProblem2()
 		}
 	default:
 		panic(fmt.Sprintf("Unknown day %d", day))
