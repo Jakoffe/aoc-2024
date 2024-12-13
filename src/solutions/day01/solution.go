@@ -2,7 +2,6 @@ package day01
 
 import (
 	"aoc/src/utils"
-	"fmt"
 	"math"
 	"sort"
 	"strconv"
@@ -62,7 +61,6 @@ func SolveProblem2() (string, error) {
 			}
 		}
 
-		fmt.Println("Number", number, "counter", counter[number])
 		simularity_score += number * counter[number]
 	}
 
