@@ -11,6 +11,7 @@ import (
 	"aoc/src/solutions/day08"
 	"aoc/src/solutions/day09"
 	"aoc/src/solutions/day10"
+	"aoc/src/solutions/day11"
 	"fmt"
 	"time"
 
@@ -108,6 +109,12 @@ func runAocPart(day int, part int) aocResult {
 			res, err = day10.SolveProblem1()
 		} else if part == 2 {
 			res, err = day10.SolveProblem2()
+		}
+	case 11:
+		if part == 1 {
+			res, err = day11.SolveProblem1()
+		} else if part == 2 {
+			res, err = day11.SolveProblem2()
 		}
 	default:
 		panic(fmt.Sprintf("Unknown day %d", day))
