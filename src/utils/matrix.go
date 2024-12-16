@@ -1,6 +1,9 @@
 package utils
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Matrix[T comparable] struct {
 	Data [][]T
@@ -124,6 +127,23 @@ func (m Matrix[T]) Print() {
 			}
 		}
 	}
+}
+
+func (m Matrix[T]) PrintMapWithPosition(x int, y int) {
+	println(strings.Repeat("=", len(m.Data[0])*3))
+	for i, row := range m.Data {
+		for j, value := range row {
+			if i == x && j == y {
+				fmt.Printf("[%v]", value)
+			} else {
+				fmt.Printf(" %v ", value)
+			}
+			if j == len(row)-1 {
+				print("\n")
+			}
+		}
+	}
+	println(strings.Repeat("=", len(m.Data[0])*3))
 }
 
 type Match[T comparable] struct {
