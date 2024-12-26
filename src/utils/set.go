@@ -41,6 +41,10 @@ func (s Set[E]) Members() []E {
 	return result
 }
 
+func (s Set[E]) Size() int {
+	return len(s)
+}
+
 func (s Set[E]) String() string {
 	return fmt.Sprintf("%v", s.Members())
 }

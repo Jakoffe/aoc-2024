@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 )
 
@@ -36,6 +37,10 @@ func (m *Matrix[T]) Set(row int, column int, value T) bool {
 	m.Data[row][column] = value
 
 	return true
+}
+
+func (m *Matrix[T]) IsValid(row int, col int) bool {
+	return !(row < 0 || col < 0 || row >= len(m.Data) || col >= len(m.Data[0]))
 }
 
 func (m *Matrix[T]) Get(row int, col int) T {
@@ -146,6 +151,23 @@ func (m Matrix[T]) PrintMapWithPosition(x int, y int) {
 	println(strings.Repeat("=", len(m.Data[0])*3))
 }
 
+func (m Matrix[T]) PrintMapWithPositions(positions []Coordinate) {
+	println(strings.Repeat("=", len(m.Data[0])*3))
+	for i, row := range m.Data {
+		for j, value := range row {
+			if slices.Contains(positions, Coordinate{X: i, Y: j}) {
+				fmt.Printf("[%v]", value)
+			} else {
+				fmt.Printf(" %v ", value)
+			}
+			if j == len(row)-1 {
+				print("\n")
+			}
+		}
+	}
+	println(strings.Repeat("=", len(m.Data[0])*3))
+}
+
 type Match[T comparable] struct {
 	Value  T
 	Row    int
@@ -158,4 +180,9 @@ func NewMatch[T comparable](value T, row int, column int) Match[T] {
 
 func (m Match[T]) String() string {
 	return fmt.Sprintf("(%v, %v, %v)", m.Value, m.Row, m.Column)
+}
+
+type Coordinate struct {
+	X int
+	Y int
 }
